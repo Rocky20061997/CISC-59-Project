@@ -7,9 +7,10 @@ class Simpletron:
 
     def execute(self, program):
         # Load program into memory
+        
         for index, instruction in enumerate(program):
             self.memory[index] = instruction
-
+            
         while True:
             instruction = self.memory[self.instructionCounter]
 
@@ -26,6 +27,12 @@ class Simpletron:
                 self.memory[operand] = self.accumulator
             elif operation_code == 30:  # ADD
                 self.accumulator += self.memory[operand]
+            elif operation_code == 31:  # SUBTRACT
+                self.accumulator -= self.memory[operand]
+            elif operation_code == 32:  # DIVIDE
+                self.accumulator //= self.memory[operand]
+            elif operation_code == 33:  # MULTIPLY
+                self.accumulator *= self.memory[operand]
             elif operation_code == 43:  # HALT
                 break
 
